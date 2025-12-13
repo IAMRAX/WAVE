@@ -231,8 +231,8 @@ async function addTab(link) {
     let links = tab.view.contentWindow.document.querySelectorAll("a");
     links.forEach((element) => {
       element.addEventListener("click", (event) => {
-        let isTargetTop = event.target.target === "_top";
-        if (isTargetTop) {
+        let istTop = event.target.target === "_top";
+        if (istTop) {
           event.preventDefault();
           addTab(event.target.href);
         }

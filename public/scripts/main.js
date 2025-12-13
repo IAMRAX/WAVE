@@ -1,10 +1,8 @@
-// ===== DOM ELEMENTS =====
 const tabs = document.querySelectorAll(".tab");
 const contentArea = document.querySelector(".content-area");
 const frame = document.querySelector(".app-frame");
 const dragRegion = document.getElementById("drag-region");
 
-// ===== GAME REGISTRY =====
 const GAME_REGISTRY = [
   { name: "Slope", icon: "https://play-lh.googleusercontent.com/uJn2i9h7KxYQarC_c3K4qH6o7gLtflFnhD_dN14MNkzHJ1NeNFzCL69jpB5mT0vCoQs", url: "/active/uv/service/hvtrs8%2F-svopaee%2Cy%3A.aoo%2F%7B8%2Fsvufim%2Fwnkt%7B_ue%60gn%2FEali-snore%2Fgcmg_0005%5Dv1%2F%3Dkgy%3F9555569%24vclwe%3F82507" },
   { name: "Retro Bowl", icon: "https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=40,height=40,fit=cover,f=auto/ee9ca3764ef4289a48a1ebf457ef605441ed1f35a0f2eb12707a70d609e53686/retro-bowl.png", url: "/active/uv/service/hvtrs8%2F-gcmg33620%3B.iolgeaoeq.aoo%2Feaoex%2F2011-620%3B%2Fnite-ildgx%2Chvmn" },
@@ -14,7 +12,6 @@ const GAME_REGISTRY = [
   { name: "Volley Random", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1TIgOyKaC36N7TckZt-gCVupPgy-ltSNyqzKzDeP-dkwZaFXPcehKqO9HWlyLi7l4R4zPlt7G1YQcI_2aaMWloyrjX64_b6PZq9DJG3FA&s=10", url: "/active/uv/service/hvtrs8%2F-kfava3.aoo%2F0001-00%2FTonlgy%5Drcnfoo%2F" },
 ];
 
-// ===== CONTENT MAP =====
 const contentMap = {
   GAMES: `
     <div class="content-inner">
@@ -39,7 +36,6 @@ const contentMap = {
   `
 };
 
-// ===== HELPERS =====
 function qs(selector) {
   return document.querySelector(selector);
 }
@@ -105,7 +101,6 @@ function attachListeners() {
   }
 }
 
-// ===== TAB SWITCHING =====
 tabs.forEach(tab => {
   tab.addEventListener("click", () => {
     const selected = tab.textContent.trim();
@@ -120,11 +115,10 @@ tabs.forEach(tab => {
   });
 });
 
-// ===== DRAGGING =====
-let targetLeft = 0;
-let targetTop = 0;
-let currentLeft = 0;
-let currentTop = 0;
+let tLeft = 0;
+let tTop = 0;
+let cLeft = 0;
+let cTop = 0;
 let animating = false;
 
 if (frame && dragRegion) {
@@ -136,8 +130,8 @@ if (frame && dragRegion) {
     offsetX = e.clientX - rect.left;
     offsetY = e.clientY - rect.top;
 
-    currentLeft = rect.left;
-    currentTop = rect.top;
+    tLeft = rect.left;
+    tTop = rect.top;
 
     frame.style.position = "absolute";
     frame.style.transition = "none";
@@ -151,8 +145,8 @@ if (frame && dragRegion) {
     const vh = window.innerHeight;
     const rect = frame.getBoundingClientRect();
 
-    targetLeft = Math.max(0, Math.min(e.clientX - offsetX, vw - rect.width));
-    targetTop = Math.max(0, Math.min(e.clientY - offsetY, vh - rect.height));
+    tLeft = Math.max(0, Math.min(e.clientX - offsetX, vw - rect.width));
+    tTop = Math.max(0, Math.min(e.clientY - offsetY, vh - rect.height));
 
     if (!animating) animateFrame();
   });
@@ -162,14 +156,14 @@ if (frame && dragRegion) {
 
     const ease = 0.18;
 
-    currentLeft += (targetLeft - currentLeft) * ease;
-    currentTop += (targetTop - currentTop) * ease;
+    cLeft += (tLeft - cLeft) * ease;
+    currentTop += (tTop - currentTop) * ease;
 
-    frame.style.left = `${currentLeft}px`;
+    frame.style.left = `${cLeft}px`;
     frame.style.top = `${currentTop}px`;
 
-    if (Math.abs(currentLeft - targetLeft) < 0.5 &&
-        Math.abs(currentTop - targetTop) < 0.5) {
+    if (Math.abs(cLeft - tLeft) < 0.5 &&
+        Math.abs(currentTop - tTop) < 0.5) {
       animating = false;
       return;
     }

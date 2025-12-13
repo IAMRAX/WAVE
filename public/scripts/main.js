@@ -63,7 +63,6 @@ function renderIframe(url) {
     })
     .catch((err) => {
       console.error(err);
-      // handle error
     });
 }
 
@@ -186,7 +185,6 @@ if (frame && dragRegion) {
   });
 }
 
-// ===== FLOATING QUESTION MARKS =====
 setInterval(() => {
   const q = document.createElement("div");
   q.className = "floating-qmark";
@@ -199,7 +197,6 @@ setInterval(() => {
   setTimeout(() => q.remove(), 4000);
 }, 2500);
 
-// ===== FULLSCREEN HANDLING =====
 document.addEventListener("keydown", (e) => {
   if (e.key.toLowerCase() !== "f") return;
 
@@ -223,4 +220,12 @@ document.addEventListener("fullscreenchange", () => {
   requestAnimationFrame(() => {
     iframe.style.height = original;
   });
+});
+
+document.addEventListener("contextmenu", (event) => {
+  const target = event.target;
+  if (target instanceof HTMLIFrameElement && target.className === "sj-frame") {
+    event.preventDefault();
+    window.open(target.src, "_blank");
+  }
 });

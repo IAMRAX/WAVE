@@ -5,14 +5,12 @@
   <title>Wave</title>
   <link rel="stylesheet" href="css/styles.css">
   <script src="scripts/main.js" defer></script>
-      <script src="check.js" defer></script>
-    <script defer src="scripts/lstimer.js"></script>
-  
-
-    <script src="uv/uv.bundle.js" defer></script>
-    <script src="uv/uv.config.js" defer></script>
-    <script src="scripts/tabs.mjs" type="module" defer></script>
-    <script defer src="https://cdn.jsdelivr.net/gh/tf7software/Font-Awesome-pro-cdn@main/js/all.js"></script>
+  	<script src="/scram/scramjet.all.js"></script>
+		<script src="baremux/index.js" defer></script>
+		<script src="epoxy/index.js" defer></script>
+		<script src="register-sw.js" defer></script>
+		<script src="search.js" defer></script>
+		<script src="index.js" defer></script>
 </head>
 
 <body>
@@ -37,9 +35,6 @@
       <button class="tab tab-loud tab-active">
         <span>PROXY</span>
       </button>
-      <button class="tab tab-loud tab-active">
-        <span>THEMES</span>
-      </button>
     </nav>
 
 <main class="content-area">
@@ -48,17 +43,14 @@
     <h2>PROXY</h2>
 
     <div class="uv-searchbar">
-      <form id="url-form">
-        <input
-          type="text"
-          id="url-input"
-          onfocus="this.setSelectionRange(0, this.value.length)"
-          placeholder="Search or enter URL"
-          autocomplete="off"
-          autocorrect="off"
-          spellcheck="false"
-        />
-      </form>
+		<form id="sj-form" class="flex-center">
+			<input
+				id="sj-search-engine"
+				value="https://www.google.com/search?q=%s"
+				type="hidden"
+			/>
+			<input id="sj-address" type="text" placeholder="Search the web freely" />
+		</form>
     </div>
 
     <p>Magic Johnson so tuff</p>

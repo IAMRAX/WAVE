@@ -26,8 +26,13 @@ const contentMap = {
     <div class="content-inner">
       <h2>PROXY</h2>
       <div class="uv-searchbar">
-        <form id="url-form">
-          <input type="text" id="url-input" placeholder="Search or enter URL" autocomplete="off" spellcheck="false" />
+        <form id="sj-form" class="flex-center">
+          <input
+            id="sj-search-engine"
+            value="https://www.google.com/search?q=%s"
+            type="hidden"
+          />
+          <input id="sj-address" type="text" placeholder="Search the web freely" />
         </form>
       </div>
       <p>Magic Johnson so tuff</p>
@@ -46,17 +51,20 @@ function renderIframe(url) {
 
   contentInner.innerHTML = "";
 
-  const iframe = document.createElement("iframe");
-  iframe.src = url;
-  iframe.style.width = "100%";
-  iframe.style.border = "none";
-  iframe.style.borderRadius = "8px";
+  const frame = scramjet.createFrame();
+  frame.frame.id = "sj-frame";
+  frame.frame.style.width = "100%";
+  frame.frame.style.border = "none";
+  frame.frame.style.borderRadius = "8px";
 
-  iframe.onload = () => {
-    iframe.style.height = iframe.offsetHeight * 2.8 + "px";
-  };
-
-  contentInner.appendChild(iframe);
+  frame.go(url)
+    .then(() => {
+      contentInner.appendChild(frame.frame);
+    })
+    .catch((err) => {
+      console.error(err);
+      // handle error
+    });
 }
 
 function renderGameGrid(games) {

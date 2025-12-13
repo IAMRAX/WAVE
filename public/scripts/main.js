@@ -36,29 +36,8 @@ const contentMap = {
       <p>Magic Johnson so tuff</p>
       <p class="hint">NOTING WE GOT NOTING</p>
     </div>
-  `,
-  THEMES: `
-    <div class="content-inner">
-      <h2>THEMES</h2>
-
-      <div class="theme-wrapper">
-        <label for="theme-select" class="theme-label">Choose a theme</label>
-
-        <select id="theme-select" class="theme-select">
-          <option value="midnight">Midnight (Default)</option>
-          <option value="safari">Safari</option>
-          <option value="neon">Neon</option>
-          <option value="pastel">Pastel</option>
-        </select>
-
-        <button id="apply-theme-btn" class="theme-apply-btn">Apply Theme</button>
-      </div>
-
-      <p class="hint">Themes load from <code>css/themes/{name}/theme.css</code></p>
-    </div>
   `
 };
-
 
 // ===== HELPERS =====
 function qs(selector) {
@@ -242,26 +221,4 @@ document.addEventListener("fullscreenchange", () => {
   requestAnimationFrame(() => {
     iframe.style.height = original;
   });
-});
-
-// Create or reuse the theme <link> element
-let themeLink = document.getElementById("theme-link");
-if (!themeLink) {
-  themeLink = document.createElement("link");
-  themeLink.rel = "stylesheet";
-  themeLink.id = "theme-link";
-  document.head.appendChild(themeLink);
-}
-
-function applyTheme(themeName) {
-  themeLink.href = `css/themes/${themeName}/theme.css`;
-  console.log(`Theme applied: ${themeName}`);
-}
-
-// Handle button click inside THEMES page
-document.addEventListener("click", (e) => {
-  if (e.target.id === "apply-theme-btn") {
-    const theme = document.getElementById("theme-select").value;
-    applyTheme(theme);
-  }
 });

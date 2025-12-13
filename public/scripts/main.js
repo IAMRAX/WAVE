@@ -4,7 +4,7 @@ const frame = document.querySelector(".app-frame");
 const dragRegion = document.getElementById("drag-region");
 
 const GAME_REGISTRY = [
-  { name: "Slope", icon: "https://play-lh.googleusercontent.com/uJn2i9h7KxYQarC_c3K4qH6o7gLtflFnhD_dN14MNkzHJ1NeNFzCL69jpB5mT0vCoQs", url: "/active/uv/service/hvtrs8%2F-svopaee%2Cy%3A.aoo%2F%7B8%2Fsvufim%2Fwnkt%7B_ue%60gn%2FEali-snore%2Fgcmg_0005%5Dv1%2F%3Dkgy%3F9555569%24vclwe%3F82507" },
+  { name: "Slope", icon: "https://play-lh.googleusercontent.com/uJn2i9h7KxYQarC_c3K4qH6o7gLtflFnhD_dN14MNkzHJ1NeNFzCL69jpB5mT0vCoQs", url: "/scramjet/https%3A%2F%2Fslopegame-online.com%2Fplay%2Fslope%2F" },
   { name: "Retro Bowl", icon: "https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=40,height=40,fit=cover,f=auto/ee9ca3764ef4289a48a1ebf457ef605441ed1f35a0f2eb12707a70d609e53686/retro-bowl.png", url: "/active/uv/service/hvtrs8%2F-gcmg33620%3B.iolgeaoeq.aoo%2Feaoex%2F2011-620%3B%2Fnite-ildgx%2Chvmn" },
   { name: "Cookie Clicker", icon: "https://super142.wordpress.com/wp-content/uploads/2022/07/cookie-clicker.jpg", url: "/active/uv/service/hvtrs8%2F-optgin.faqhlev.mre%2Faomkkealkciep%2F" },
   { name: "Run 3", icon: "https://azgames.io/upload/cache/upload/imgs/run3thumb-m180x180.png", url: "/active/uv/service/hvtrs8%2F-pna%7Bep01.aoo%2Fpul%2F1%2F%60eva-" },
@@ -51,19 +51,17 @@ function renderIframe(url) {
 
   contentInner.innerHTML = "";
 
-  const frame = scramjet.createFrame();
-  frame.frame.id = "sj-frame";
-  frame.frame.style.width = "100%";
-  frame.frame.style.border = "none";
-  frame.frame.style.borderRadius = "8px";
+  const iframe = document.createElement("iframe");
+  iframe.src = url;
+  iframe.style.width = "100%";
+  iframe.style.border = "none";
+  iframe.style.borderRadius = "8px";
 
-  frame.go(url)
-    .then(() => {
-      contentInner.appendChild(frame.frame);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+  iframe.onload = () => {
+    iframe.style.height = iframe.offsetHeight * 2.8 + "px";
+  };
+
+  contentInner.appendChild(iframe);
 }
 
 function renderGameGrid(games) {
@@ -185,6 +183,7 @@ if (frame && dragRegion) {
   });
 }
 
+// ===== FLOATING QUESTION MARKS =====
 setInterval(() => {
   const q = document.createElement("div");
   q.className = "floating-qmark";
@@ -197,6 +196,7 @@ setInterval(() => {
   setTimeout(() => q.remove(), 4000);
 }, 2500);
 
+// ===== FULLSCREEN HANDLING =====
 document.addEventListener("keydown", (e) => {
   if (e.key.toLowerCase() !== "f") return;
 
@@ -207,25 +207,5 @@ document.addEventListener("keydown", (e) => {
     document.exitFullscreen();
   } else {
     iframe.requestFullscreen().catch(console.warn);
-  }
-});
-
-document.addEventListener("fullscreenchange", () => {
-  const iframe = qs(".content-inner iframe");
-  if (!iframe || document.fullscreenElement) return;
-
-  const original = iframe.style.height;
-  iframe.style.height = iframe.offsetHeight + 1 + "px";
-
-  requestAnimationFrame(() => {
-    iframe.style.height = original;
-  });
-});
-
-document.addEventListener("contextmenu", (event) => {
-  const target = event.target;
-  if (target instanceof HTMLIFrameElement && target.className === "sj-frame") {
-    event.preventDefault();
-    window.open(target.src, "_blank");
   }
 });

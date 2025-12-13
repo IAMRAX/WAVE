@@ -22,15 +22,18 @@ body {
 }
 
 #sj-frame {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	background-color: #111;
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    height: 180%;
+
+    z-index: 999999;
+    border: none;
+    box-sizing: border-box;
 }
-
-
 
 .app-frame {
   width: 900px;

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://unblockedgames66.gitlab.io/slope/ -->
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+    
+    
+    <title>Slope Unblocked Unblocked - Unblocked Games 66</title>
+    <meta name="description" content="Slope Game - slope unblocked wtf - TBG95">
+    
+    <meta property="og:image" content="slope.png">
+    <meta name="website" content="classroom6x.gitlab.io">
+    <link rel="shortcut icon" href="https://unblockedgames66.gitlab.io/slope/TemplateData/icon16.png">
+    <link rel="stylesheet" href="./Slope Unblocked Unblocked - Unblocked Games 66_files/style.css">
+
+    <style>
+       #unity-canvas {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 100% !important;
+      height: 100% !important;
+    }
+      body{
+        background: url("bg.jpg");
+      }
+      a:-webkit-any-link {
+          color: -webkit-link;
+          cursor: pointer;
+          text-decoration: underline;
+      }
+      a{
+        cursor: pointer;
+      }
+      h1 {
+    position: absolute;
+    text-align: center;
+    z-index: 1;
+    background: #fff;
+    width: 100%;
+    top: 0;
+    margin: 0;
+}
+    </style>
+		<script id="id-jssdk" src="./Slope Unblocked Unblocked - Unblocked Games 66_files/sdk.js.download"></script><script type="text/javascript" src="./Slope Unblocked Unblocked - Unblocked Games 66_files/null.js.download"></script>
+  </head>
+  <body style="overflow:hidden;">
+
+    <!-- <h1 id="title">slope unblocked games wtf</h1> -->
+    <canvas id="unity-canvas" style="width: 960px; height: 600px; cursor: default;" width="1920" height="945"></canvas>
+    <div id="unity-loading-bar" style="display: none;">
+      <div id="unity-logo"></div>
+      <div id="unity-progress-bar-empty">
+        <div id="unity-progress-bar-full" style="width: 100%;"></div>
+      </div>
+    </div>
+    <script>
+
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/SlopeBuild.loader.js";
+      var config = {
+        dataUrl: buildUrl + "/SlopeBuild.data",
+        frameworkUrl: buildUrl + "/SlopeBuild.framework.js",
+        codeUrl: buildUrl + "/SlopeBuild.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Y8",
+        productName: "Slope",
+        productVersion: "1.2",
+		matchWebGLToCanvasSize: true
+      };
+
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var mobileWarning = document.querySelector("#unity-mobile-warning");
+
+      // By default Unity keeps WebGL canvas render target size matched with
+      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+      // Set this to false if you want to decouple this synchronization from
+      // happening inside the engine, and you would instead like to size up
+      // the canvas DOM size and WebGL render target sizes yourself.
+      // config.matchWebGLToCanvasSize = false;
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        container.className = "unity-mobile";
+        // Avoid draining fillrate performance on mobile devices,
+        // and default/override low DPI mode on mobile browsers.
+        mobileWarning.style.display = "block";
+        setTimeout(() => {
+          mobileWarning.style.display = "none";
+        }, 5000);
+      } else {
+        canvas.style.width = "960px";
+        canvas.style.height = "600px";
+      }
+      loadingBar.style.display = "block";
+	  var myGameInstance = null;
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then((unityInstance) => {
+		  myGameInstance = unityInstance;
+          loadingBar.style.display = "none";
+          /*fullscreenButton.onclick = () => {
+				unityInstance.SetFullscreen(1);
+			  };*/
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+    </script><script src="./Slope Unblocked Unblocked - Unblocked Games 66_files/SlopeBuild.loader.js.download"></script>
+    <script type="text/javascript" src="./Slope Unblocked Unblocked - Unblocked Games 66_files/gameBreakBeta.js.download"></script>
+    <script type="text/javascript">
+      function hiddenH1(){
+        document.getElementById("title").style.display = "none";
+      }
+      setTimeout(hiddenH1, 30000);
+    </script>
+  
+
+<script src="./Slope Unblocked Unblocked - Unblocked Games 66_files/SlopeBuild.framework.js.download"></script><iframe name="easyXDM_id_xd_api_provider" id="easyXDM_id_xd_api_provider" src="./Slope Unblocked Unblocked - Unblocked Games 66_files/null.html" frameborder="0" style="position: absolute; top: -2000px; left: 0px;"></iframe><div id="id-root" class="id-reset"></div></body></html>

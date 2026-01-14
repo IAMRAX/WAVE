@@ -18,6 +18,5 @@
       ]
     }
   ],
-  "buildCommand": bash build.sh",
-  "outputDirectory": "public"
+  "buildCommand": "bash build.sh",  "outputDirectory": "public"
 }

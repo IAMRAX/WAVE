@@ -5,32 +5,51 @@
     <title>Wave</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="scripts/main.js" defer></script>
-        <script src="/uv/uv.bundle.js" defer></script>
-        <script src="/uv/uv.config.js" defer></script>
-        <script src="scripts/register-sw.js" defer></script>
-        <script src="scripts/search.js" defer></script>
-        <script src="scripts/index.js" defer></script>
+    <script src="/uv/uv.bundle.js" defer></script>
+    <script src="/uv/uv.config.js" defer></script>
+    <script src="scripts/register-sw.js" defer></script>
+    <script src="scripts/search.js" defer></script>
+    <script src="scripts/index.js" defer></script>
     <!------------------------------------------------------------>
     <script src="scripts/active/check.js" defer></script>
     <script defer src="scripts/lstimer.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Wave</h1>
-        <div class="search-container">
-            <input type="text" id="url-input" placeholder="Enter URL or search..." />
-            <button id="go-button">Go</button>
-        </div>
-    </header>
-
-    <main>
-        <div id="frame-container">
-            <iframe id="proxy-frame"></iframe>
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Wave Proxy</p>
-    </footer>
+    <div class="app-frame">
+        <header class="app-header" id="drag-region">
+            <div class="app-title">Wave</div>
+            <div class="app-lock">
+                <div class="lock-icon">
+                    <span class="lock-hole"></span>
+                </div>
+                <span class="lock-label">locked-ish</span>
+            </div>
+        </header>
+        <nav class="tab-bar">
+            <button class="tab tab-quiet">
+                <span>GAMES</span>
+            </button>
+            <button class="tab tab-loud tab-active">
+                <span>PROXY</span>
+            </button>
+        </nav>
+        <main class="content-area">
+            <div class="content-noise"></div>
+            <div class="content-inner">
+                <h2>PROXY</h2>
+                <div class="uv-searchbar">
+                    <form id="uv-form" class="flex-center">
+                        <input
+                            id="uv-search-engine"
+                            value="https://www.google.com/search?q=%s"
+                            type="hidden"
+                        />
+                        <input id="uv-address" type="text" placeholder="Search the web freely" />
+                    </form>
+                </div>
+                <iframe id="uv-frame" class="proxy-frame" style="display:none;"></iframe>
+            </div>
+        </main>
+    </div>
 </body>
 </html>

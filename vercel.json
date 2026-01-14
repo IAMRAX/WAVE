@@ -1,0 +1,23 @@
+{
+  "rewrites": [
+    { "source": "/wisp/", "destination": "/api/wisp" },
+    { "source": "/wisp", "destination": "/api/wisp" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "Cross-Origin-Embedder-Policy",
+          "value": "require-corp"
+        }
+      ]
+    }
+  ],
+  "buildCommand": "npm install",
+  "outputDirectory": "public"
+}

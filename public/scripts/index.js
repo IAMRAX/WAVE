@@ -22,8 +22,7 @@ if (form && address && frame) {
         // Register the service worker if not already registered
         if ('serviceWorker' in navigator) {
             try {
-                await navigator.serviceWorker.register('/uv/uv.sw.js', {
-                    scope: '/service/'
+                await navigator.serviceWorker.register('https://cdn.jsdelivr.net/npm/@titaniumnetwork-dev/ultraviolet@3/dist/uv.sw.js', {                    scope: '/service/'
                 });
             } catch (error) {
                 console.error('Service worker registration failed:', error);
